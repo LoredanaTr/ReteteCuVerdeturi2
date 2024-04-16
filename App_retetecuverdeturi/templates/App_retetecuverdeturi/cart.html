@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+{% extends "App_retetecuverdeturi/base.html" %}
+{% load static %}
+{% block content %}
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+
+<div class="container spaced-top-5 black-bg" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col">
+            <h1 style="text-align: center;
+            font-size: 70px;
+            font-weight: 700;
+            text-transform: none;
+            font-style: normal;
+            text-decoration: none;
+            line-height: 1em;
+            letter-spacing: -3px;
+            margin-top: 50px;
+            margin-bottom: 50px;">Shopping Cart</h1></br></br></br></br>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order_item in order_items %}
+                            <tr>
+                                <td>{{ order_item.product.name }}</td>
+                                <td>{{ order_item.product.price }}</td>
+                                <td>{{ order_item.quantity }}</td>
+                                <td>{{ order_item.get_final_price }}</td>
+                                <td>
+                                    <button onclick="deleteProduct({{ order_item.product.id }})">Delete</button>
+                                </td>
+                                <td>
+                                    <button onclick="updateQuantity({{ order_item.product.id }}, 'increase')">+</button>
+                                    {{ order_item.quantity }}
+                                    <button onclick="updateQuantity({{ order_item.product.id }}, 'decrease')">-</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td>Total:</td>
+                            <td>{{ total_cumparaturi }}</td>
+                        </tr>
+                    </tfoot>
+                </table></br>
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'App_retetecuverdeturi:products' %}">
+                    <button class="btn-custom spaced-top-2">Continue Shopping</button>
+                </a>
+                <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'App_retetecuverdeturi:checkout' %}">Checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

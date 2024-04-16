@@ -1,0 +1,95 @@
+body {
+    background-image: url("/static/images/background.jpg");
+}
+
+.navbar{
+    background-color: #7ed957 !important;
+    position: relative; /* Asigură-te că navbar-ul este poziționat relativ */
+}
+
+
+
+
+.product-container {
+    background-color: white; /* Setează culoarea de fundal a containerului la alb */
+    padding: 20px; /* Adaugă un spațiu de 20px în jurul conținutului */
+    border-radius: 10px; /* Adaugă colțuri rotunjite pentru container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adaugă o umbră subtilă */
+}
+
+.follow-us h3 {
+  font-size: 18px; /* Diminuează dimensiunea fontului */
+  font-weight: bold; /* Face textul îngroșat */
+  margin-bottom: 5px; /* Adaugă un spațiu între "Follow us" și iconițe */
+  right: 500px;
+}
+
+.social-media-icons a {
+  font-size: 20px; /* Redu dimensiunea iconițelor */
+  margin-right: 20px; /* Adaugă un spațiu între iconițe */
+}
+
+
+.heading-title {
+    color: #000000;
+    font-size: 70px;
+    font-weight: 500;
+    text-transform: none;
+    font-style: normal;
+    font-family: "Garamond, serif";
+    text-decoration: none;
+    line-height: 1em;
+    letter-spacing: -2px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.spaced-top-5 {
+    margin-top: 5em;
+}
+
+.spaced-top-2 {
+    margin-top: 2em;
+}
+
+.btn-custom {
+    font-weight: bold;
+    background-color: #8B4513;
+    padding: 10px 40px;
+    border-radius: 20px;
+    border: 2px solid #FFC300;
+    color: #000000;
+}
+
+.btn-custom:hover {
+    background-color: #FFFFFF;
+    color: #822739;
+}
+
+.btn-custom-reverse {
+    font-weight: bold;
+    background-color: #FFFFFF;
+    padding: 10px 40px;
+    border-radius: 20px;
+    border: 2px solid #FFC300;
+    color: #FFC300;
+}
+
+.btn-custom-reverse:hover {
+    background-color: #FFC300;
+    color: #FFFFFF;
+}
+
+.brand-logo {
+    font-size: 50px;
+    margin-right: 10px;
+}
+
+.carousel-inner {
+  display: flex;
+  justify-content: flex-end; /* Aliniază conținutul la dreapta */
+}
+
+.carousel-item {
+  max-width: 70%; /* Lățime maximă a elementului părinte pentru a lăsa spațiu pentru conținut */
+}

@@ -1,0 +1,90 @@
+{% extends "App_retetecuverdeturi/base.html" %}
+{% load static %}
+{% block content %}
+
+   <div class="row">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form method="post" action="{% url 'App_retetecuverdeturi:checkout' %}">
+					{% csrf_token %}
+					<div id="user-info">
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Name..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Email..">
+						</div>
+					</div>
+
+					<div id="shipping-info">
+						<hr>
+						<p>Shipping Information:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Address..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="City..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="State..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="country" placeholder="Country..">
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small>Payment Options</small>
+			</div>
+
+		</div>
+
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a  class="btn btn-outline-dark" href="{% url 'App_retetecuverdeturi:cart' %}">&#x2190; Back to Cart</a>
+				<form method="post" action="{% url 'App_retetecuverdeturi:finalizeaza_comanda' %}">
+                   {% csrf_token %}
+                   <button type="submit" class="btn btn-outline-dark">Submit Order</button>
+                </form>
+				<hr>
+				<h3>Order Summary</h3>
+				<hr>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Product</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for order_item in order_items %}
+							<tr>
+								<td>{{ order_item.product.name }}</td>
+								<td>{{ order_item.product.price }}</td>
+								<td>{{ order_item.quantity }}</td>
+								<td>{{ order_item.get_final_price }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="3"></td>
+							<td>Total: {{ total_cumparaturi }}</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

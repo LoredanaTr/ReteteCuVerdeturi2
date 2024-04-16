@@ -1,0 +1,25 @@
+{% extends "App_retetecuverdeturi/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Rezultatele căutării pentru "{{ query }}"</h2>
+    {% if results %}
+        <ul>
+            {% for product in results %}
+                <li>{{ product.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nu au fost găsite rezultate pentru căutarea "{{ query }}".</p>
+    {% endif %}
+</div>
+
+<!-- Formularul de căutare -->
+<div class="container">
+    <h2>Search product</h2>
+    <form action="{% url 'App_retetecuverdeturi:search' %}" method="GET">
+        <input type="text" name="query" placeholder="Introdu termenul de căutare...">
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}

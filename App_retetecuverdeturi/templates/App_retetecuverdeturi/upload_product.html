@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Încărcați un produs</title>
+
+</head>
+<body>
+    <h1>Încărcați un produs</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Încărcați produsul">
+    </form>
+</body>
+</html>

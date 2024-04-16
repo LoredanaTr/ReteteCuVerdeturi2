@@ -1,0 +1,32 @@
+{% extends "App_retetecuverdeturi/base.html" %}
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+   <div class="row d-flex justify-content-center align-items-center " style="height: 100vh;">
+       <div class="col">
+           <img src="{{ product.image.url }}" alt="{{ product.name }} Image" class="img-fluid">
+       </div>
+       <div class="col">
+           <div class="card p-4">
+             <div class="row">
+                <h5 class="card-title">{{ product.name }} | <span class="text-success">Available: {{product.available_quantity}}</span></h5>
+                <h5 class="card-title text-danger">Price: {{ product.price }} lei</h5>
+                <p class="card-text"><p> {{product.description}}</p>
+                <p class="card-text"><p>Ingredients: {{product.ingredients}}</p>
+                <p class="card-text"><small class="text-muted">Weight: {{ product.weight_grams }} g</small></p>
+             </div>
+           </div>
+           {% if user.is_authenticated %}
+               <a href="{% url 'App_retetecuverdeturi:add_to_cart' product_id=product.id %}">
+                   <button class="btn-custom-reverse spaced-top-2">Add to cart</button>
+               </a>
+               <form action="{% url 'account:add_to_wishlist' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" class="wishlist-button btn-custom spaced-top-2"><i class="far fa-heart"></i></button>
+               </form>
+
+           {% endif %}
+       </div></br>
+   </div>
+</div>
+{% endblock %}

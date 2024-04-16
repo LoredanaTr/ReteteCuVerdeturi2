@@ -1,0 +1,26 @@
+{% extends "App_retetecuverdeturi/base.html" %}
+{% block content %}
+
+<div class="container">
+    <h2>Wishlist</h2>
+    <div class="row">
+        {% for item in wishlist %}
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.product.name }}</h5>
+                        <p class="card-text">{{ item.product.description }}</p>
+                        <p class="card-text">Price: {{ item.product.price }} euro</p>
+                        <!-- Aici poți adăuga alte detalii sau acțiuni, cum ar fi butoanele pentru ștergere sau adăugare în coș -->
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col">
+                <p>Nu ai niciun produs în lista de dorințe.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

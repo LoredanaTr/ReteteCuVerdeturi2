@@ -1,0 +1,128 @@
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/static/images/logo.png" width="150" height="100" alt="Retete cu verdeturi">
+    </a>
+    <div class="follow-us ms-auto">
+      <h3>Follow us</h3>
+      <div class="social-media-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Acasa</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'App_retetecuverdeturi:products' %}">Produse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'App_retetecuverdeturi:contact' %}">Contact</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account:my_account' %}" title="Contul meu">Contul meu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}" title="Deautentificare">Hi, {{ user.username }}</a>
+          </li>
+          <li class="nav-item">
+            <form action="{% url 'logout' %}" method="POST">
+              {% csrf_token %}
+              <button class="nav-link logout-button" type="submit"><i class="fas fa-sign-out-alt"></i></button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'App_retetecuverdeturi:cart' %}" title="Coșul tău"><i class="fa-solid fa-shopping-cart"></i></a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account:login' %}" title="Autentificare"><i class="fa-solid fa-sign-in-alt"></i></a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+
+
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--  <div class="container-fluid">-->
+<!--    <a class="navbar-brand" href="/">-->
+<!--      <img src="/static/images/logo.png" width="150" height="100" alt="Retete cu verdeturi">-->
+<!--    </a>-->
+<!--    <div class="follow-us ms-auto">-->
+<!--      <h3>Follow us</h3>-->
+<!--      <div class="social-media-icons">-->
+<!--        <a href="#"><i class="fab fa-facebook"></i></a>-->
+<!--        <a href="#"><i class="fab fa-instagram"></i></a>-->
+<!--        <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+<!--      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">-->
+<!--        <form class="d-flex" role="search">-->
+<!--          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--          <button class="btn btn-outline-success" type="submit">Search</button>-->
+<!--        </form>-->
+
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" aria-current="page" href="/">Acasa</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item dropdown">-->
+<!--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--            Produse-->
+<!--          </a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            {% for category in categories %}-->
+<!--              <li><a class="dropdown-item" href="{% url 'App_retetecuverdeturi:category' category.slug %}">{{ category.nume }}</a></li>-->
+<!--            {% endfor %}-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link" href="{% url 'App_retetecuverdeturi:contact' %}">Contact</a>-->
+<!--        </li>-->
+<!--        {% if user.is_authenticated %}-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'account:my_account' %}" title="Contul meu">Contul meu</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'logout' %}" title="Deautentificare">Hi, {{ user.username }}</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <form action="{% url 'logout' %}" method="POST">-->
+<!--              {% csrf_token %}-->
+<!--              <button class="nav-link logout-button" type="submit"><i class="fas fa-sign-out-alt"></i></button>-->
+<!--            </form>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'App_retetecuverdeturi:cart' %}" title="Coșul tău"><i class="fa-solid fa-shopping-cart"></i></a>-->
+<!--          </li>-->
+<!--        {% else %}-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'account:login' %}" title="Autentificare"><i class="fa-solid fa-sign-in-alt"></i></a>-->
+<!--          </li>-->
+<!--        {% endif %}-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+
+

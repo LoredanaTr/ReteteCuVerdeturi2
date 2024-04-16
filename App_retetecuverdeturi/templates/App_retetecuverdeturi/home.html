@@ -1,0 +1,23 @@
+{% extends "App_retetecuverdeturi/base.html" %}
+
+{% block content %}
+<div class="container spaced-top-5 black-bg">
+    <div class="row">
+        <div class="cool">
+            <div class="row">
+                <div class="col-xs-7 col-md-4 text-center_mobile">
+                </div>
+                <ul class="social-icons">
+                </ul>
+                <h2 class="heading-title">Descoperă magia culinară a verdeturilor</h2>
+            </div>
+            <a href="{% url 'App_retetecuverdeturi:upload_product' %}">
+                <button class="btn-custom spaced-top-2">Incarca produse</button>
+            </a>
+        </div>
+        <div class="col">
+            {% include "App_retetecuverdeturi/carousel.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}

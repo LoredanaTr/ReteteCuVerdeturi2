@@ -1,0 +1,30 @@
+{% extends "App_retetecuverdeturi/base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Contul meu</h1>
+  <div>
+    <h3>Numele utilizatorului: {{ user.username }}</h3>
+  </div>
+  <div>
+    <h3><a href="{% url 'App_retetecuverdeturi:cart' %}">Cosul de cumparaturi:( {{ order_total }})</a></h3>
+  </div>
+  <div>
+    {% for order in orders %}
+    <h3>Istoric comenzi: {{ order.total }}</h3>
+
+    {% endfor %}
+
+  </div>
+  <div>
+    <h3>Modificare date cont:</h3>
+    <!-- Formular pentru modificare date cont -->
+  </div>
+  <div>
+    <h3>Schimbare parolă:</h3>
+    <!-- Formular pentru schimbare parolă -->
+  </div>
+  <div>
+    <a href="{% url 'logout' %}" title="Deautentificare">Deconectare</a>
+  </div>
+</div>
+{% endblock %}
